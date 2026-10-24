@@ -1,0 +1,549 @@
+================================================================================
+BLADE FILES REQUIRING TRANSLATION CONVERSION
+================================================================================
+
+Pattern to use: {{ t('key', 'Default Text') }}
+Example: <button>Save</button> becomes <button>{{ t('common.save', 'Save') }}</button>
+
+FILE: resources/views/accounts/accounts_balancesheet.blade.php
+--------------------------------------------------------------------------------
+  Line   25 | Key: report.export_pdf         | Replace: 'Export to PDF' with {{ t('report.export_pdf', 'Export to PDF') }}
+  Line   26 | Key: report.export_excel       | Replace: 'Export to Excel' with {{ t('report.export_excel', 'Export to Excel') }}
+
+FILE: resources/views/accounts/accounts_balancesheet_excel.blade.php
+--------------------------------------------------------------------------------
+  Line   16 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line   36 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/accounts/accounts_balancesheet_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   33 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line   59 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/accounts/accounts_bank_deposit.blade.php
+--------------------------------------------------------------------------------
+  Line  138 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  139 | Key: common.cancel             | Replace: 'Cancel' with {{ t('common.cancel', 'Cancel') }}
+  Line  115 | Key: common.yes                | Replace: 'Yes' with {{ t('common.yes', 'Yes') }}
+  Line  119 | Key: common.no                 | Replace: 'No' with {{ t('common.no', 'No') }}
+  Line   42 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   43 | Key: common.inactive           | Replace: 'Inactive' with {{ t('common.inactive', 'Inactive') }}
+  Line   40 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line  101 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  108 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+
+FILE: resources/views/accounts/accounts_bank_deposit_list.blade.php
+--------------------------------------------------------------------------------
+  Line   32 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   31 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/accounts/accounts_bank_payment.blade.php
+--------------------------------------------------------------------------------
+  Line  140 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  141 | Key: common.cancel             | Replace: 'Cancel' with {{ t('common.cancel', 'Cancel') }}
+  Line  115 | Key: common.yes                | Replace: 'Yes' with {{ t('common.yes', 'Yes') }}
+  Line  119 | Key: common.no                 | Replace: 'No' with {{ t('common.no', 'No') }}
+  Line   42 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   43 | Key: common.inactive           | Replace: 'Inactive' with {{ t('common.inactive', 'Inactive') }}
+  Line   40 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line  101 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  108 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+
+FILE: resources/views/accounts/accounts_bank_payment_list.blade.php
+--------------------------------------------------------------------------------
+  Line   32 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   31 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/accounts/accounts_bank_report.blade.php
+--------------------------------------------------------------------------------
+  Line   66 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/accounts/accounts_bank_report_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   22 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/accounts/accounts_bankrecon.blade.php
+--------------------------------------------------------------------------------
+  Line  118 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  143 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line  141 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/accounts/accounts_edit_bank_deposit.blade.php
+--------------------------------------------------------------------------------
+  Line  160 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  161 | Key: common.cancel             | Replace: 'Cancel' with {{ t('common.cancel', 'Cancel') }}
+  Line  136 | Key: common.yes                | Replace: 'Yes' with {{ t('common.yes', 'Yes') }}
+  Line  140 | Key: common.no                 | Replace: 'No' with {{ t('common.no', 'No') }}
+  Line   54 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   55 | Key: common.inactive           | Replace: 'Inactive' with {{ t('common.inactive', 'Inactive') }}
+  Line   51 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line  120 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  128 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+
+FILE: resources/views/accounts/accounts_edit_bank_payment.blade.php
+--------------------------------------------------------------------------------
+  Line  162 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  163 | Key: common.cancel             | Replace: 'Cancel' with {{ t('common.cancel', 'Cancel') }}
+  Line  136 | Key: common.yes                | Replace: 'Yes' with {{ t('common.yes', 'Yes') }}
+  Line  140 | Key: common.no                 | Replace: 'No' with {{ t('common.no', 'No') }}
+  Line   54 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   55 | Key: common.inactive           | Replace: 'Inactive' with {{ t('common.inactive', 'Inactive') }}
+  Line   51 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line  120 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  128 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+
+FILE: resources/views/accounts/accounts_general_ledger.blade.php
+--------------------------------------------------------------------------------
+  Line   61 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/accounts/accounts_general_ledger_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   64 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/accounts/accounts_journal_edit.blade.php
+--------------------------------------------------------------------------------
+  Line   64 | Key: common.delete             | Replace: 'Delete' with {{ t('common.delete', 'Delete') }}
+  Line   62 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   60 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   83 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line   54 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/accounts/accounts_journal_entry.blade.php
+--------------------------------------------------------------------------------
+  Line   39 | Key: common.delete             | Replace: 'Delete' with {{ t('common.delete', 'Delete') }}
+  Line   37 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   35 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   54 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line   80 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line   57 | Key: common.reference          | Replace: 'Reference' with {{ t('common.reference', 'Reference') }}
+  Line   31 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/accounts/accounts_journal_entry_all.blade.php
+--------------------------------------------------------------------------------
+  Line   30 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+
+FILE: resources/views/accounts/accounts_print_check.blade.php
+--------------------------------------------------------------------------------
+  Line   39 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   38 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/accounts/accounts_profitloss.blade.php
+--------------------------------------------------------------------------------
+  Line   53 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line   91 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line   26 | Key: report.export_pdf         | Replace: 'Export to PDF' with {{ t('report.export_pdf', 'Export to PDF') }}
+  Line   27 | Key: report.export_excel       | Replace: 'Export to Excel' with {{ t('report.export_excel', 'Export to Excel') }}
+
+FILE: resources/views/accounts/accounts_profitloss_details.blade.php
+--------------------------------------------------------------------------------
+  Line   12 | Key: common.reference          | Replace: 'Reference' with {{ t('common.reference', 'Reference') }}
+  Line   10 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+  Line   15 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+
+FILE: resources/views/accounts/accounts_profitloss_new.blade.php
+--------------------------------------------------------------------------------
+  Line   68 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  106 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/accounts/accounts_profitloss_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   34 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line   62 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/admin/admin_index.blade.php
+--------------------------------------------------------------------------------
+  Line 1341 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line 1377 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line 1413 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line 1449 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line 1486 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line 1522 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line  542 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  585 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  681 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  710 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  739 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  768 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  797 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  826 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  855 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  892 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  921 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  950 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  979 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1008 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1037 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1066 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1105 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1134 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1163 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1192 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1221 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1250 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line 1281 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/attendance/attendance_date_list.blade.php
+--------------------------------------------------------------------------------
+  Line   62 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   61 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/claims/claims_batch_show.blade.php
+--------------------------------------------------------------------------------
+  Line   60 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/claims/claims_batches_index.blade.php
+--------------------------------------------------------------------------------
+  Line   31 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+
+FILE: resources/views/claims/claims_check_results.blade.php
+--------------------------------------------------------------------------------
+  Line   44 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/claims/claims_cms_preview.blade.php
+--------------------------------------------------------------------------------
+  Line   11 | Key: common.print              | Replace: 'Print' with {{ t('common.print', 'Print') }}
+
+FILE: resources/views/claims/claims_create.blade.php
+--------------------------------------------------------------------------------
+  Line  333 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  177 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/claims/claims_drafts.blade.php
+--------------------------------------------------------------------------------
+  Line  197 | Key: common.close              | Replace: 'Close' with {{ t('common.close', 'Close') }}
+  Line   81 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line  178 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   88 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  183 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/claims/claims_edit.blade.php
+--------------------------------------------------------------------------------
+  Line   74 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+
+FILE: resources/views/claims/claims_send_batch_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   59 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/claims/claims_send_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   45 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/components/status-select.blade.php
+--------------------------------------------------------------------------------
+  Line    5 | Key: common.delete             | Replace: 'Delete' with {{ t('common.delete', 'Delete') }}
+  Line    3 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+
+FILE: resources/views/doctors/doctors_appointment_form.blade.php
+--------------------------------------------------------------------------------
+  Line   42 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line   40 | Key: common.print              | Replace: 'Print' with {{ t('common.print', 'Print') }}
+  Line  248 | Key: common.print              | Replace: 'Print' with {{ t('common.print', 'Print') }}
+  Line  163 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line  155 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+
+FILE: resources/views/doctors/doctors_appointment_index.blade.php
+--------------------------------------------------------------------------------
+  Line   31 | Key: common.edit               | Replace: 'Edit' with {{ t('common.edit', 'Edit') }}
+  Line   30 | Key: common.view               | Replace: 'View' with {{ t('common.view', 'View') }}
+  Line   19 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/doctors/physician_cat_form.blade.php
+--------------------------------------------------------------------------------
+  Line   13 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line   32 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/doctors/physician_cat_index.blade.php
+--------------------------------------------------------------------------------
+  Line   28 | Key: common.edit               | Replace: 'Edit' with {{ t('common.edit', 'Edit') }}
+  Line   27 | Key: common.view               | Replace: 'View' with {{ t('common.view', 'View') }}
+  Line   17 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   17 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+
+FILE: resources/views/doctors/physician_master_form.blade.php
+--------------------------------------------------------------------------------
+  Line   13 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line   66 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/doctors/physician_master_index.blade.php
+--------------------------------------------------------------------------------
+  Line   30 | Key: common.edit               | Replace: 'Edit' with {{ t('common.edit', 'Edit') }}
+  Line   29 | Key: common.view               | Replace: 'View' with {{ t('common.view', 'View') }}
+  Line   16 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   16 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+
+FILE: resources/views/drivers/drivers_pickup.blade.php
+--------------------------------------------------------------------------------
+  Line   66 | Key: common.print              | Replace: 'Print' with {{ t('common.print', 'Print') }}
+  Line   87 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   64 | Key: report.export_pdf         | Replace: 'Export to PDF' with {{ t('report.export_pdf', 'Export to PDF') }}
+
+FILE: resources/views/drivers/drivers_pickup_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   46 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+
+FILE: resources/views/employee/employee_list_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   35 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   31 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+
+FILE: resources/views/employee/employees_all.blade.php
+--------------------------------------------------------------------------------
+  Line   67 | Key: common.delete             | Replace: 'Delete' with {{ t('common.delete', 'Delete') }}
+  Line   65 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   40 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   41 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   33 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   34 | Key: common.photo              | Replace: 'Photo' with {{ t('common.photo', 'Photo') }}
+
+FILE: resources/views/employee/employees_list_all.blade.php
+--------------------------------------------------------------------------------
+  Line   35 | Key: common.delete             | Replace: 'Delete' with {{ t('common.delete', 'Delete') }}
+  Line   83 | Key: common.delete             | Replace: 'Delete' with {{ t('common.delete', 'Delete') }}
+  Line   33 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   82 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   55 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   48 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   49 | Key: common.photo              | Replace: 'Photo' with {{ t('common.photo', 'Photo') }}
+  Line   40 | Key: report.export_pdf         | Replace: 'Export to PDF' with {{ t('report.export_pdf', 'Export to PDF') }}
+
+FILE: resources/views/era/era_claim_show.blade.php
+--------------------------------------------------------------------------------
+  Line  103 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line  135 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line  184 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line  225 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line  104 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  185 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+
+FILE: resources/views/era/era_file_show.blade.php
+--------------------------------------------------------------------------------
+  Line   71 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/era/era_index.blade.php
+--------------------------------------------------------------------------------
+  Line   59 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/era/era_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   63 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   85 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/frequencymonitor/create.blade.php
+--------------------------------------------------------------------------------
+  Line   41 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/frequencymonitor/edit.blade.php
+--------------------------------------------------------------------------------
+  Line   42 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/frequencymonitor/index.blade.php
+--------------------------------------------------------------------------------
+  Line   30 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   28 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   29 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/hmo/create.blade.php
+--------------------------------------------------------------------------------
+  Line   41 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/hmo/edit.blade.php
+--------------------------------------------------------------------------------
+  Line   42 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/hmo/index.blade.php
+--------------------------------------------------------------------------------
+  Line   29 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   27 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   28 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/icd10/index.blade.php
+--------------------------------------------------------------------------------
+  Line   41 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   40 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/member_status/create.blade.php
+--------------------------------------------------------------------------------
+  Line   41 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/member_status/edit.blade.php
+--------------------------------------------------------------------------------
+  Line   42 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/member_status/index.blade.php
+--------------------------------------------------------------------------------
+  Line   30 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   28 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   29 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/members/members_add.blade.php
+--------------------------------------------------------------------------------
+  Line  449 | Key: common.yes                | Replace: 'Yes' with {{ t('common.yes', 'Yes') }}
+  Line  450 | Key: common.no                 | Replace: 'No' with {{ t('common.no', 'No') }}
+  Line   90 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line  115 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+  Line  946 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+  Line  961 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/members/members_all.blade.php
+--------------------------------------------------------------------------------
+  Line   65 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   40 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   41 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   33 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   34 | Key: common.photo              | Replace: 'Photo' with {{ t('common.photo', 'Photo') }}
+
+FILE: resources/views/members/members_census_sheet.blade.php
+--------------------------------------------------------------------------------
+  Line    8 | Key: common.print              | Replace: 'Print' with {{ t('common.print', 'Print') }}
+  Line   45 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   46 | Key: common.photo              | Replace: 'Photo' with {{ t('common.photo', 'Photo') }}
+  Line   53 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+  Line    6 | Key: report.export_pdf         | Replace: 'Export to PDF' with {{ t('report.export_pdf', 'Export to PDF') }}
+
+FILE: resources/views/members/members_census_sheet_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   81 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   90 | Key: common.photo              | Replace: 'Photo' with {{ t('common.photo', 'Photo') }}
+  Line   89 | Key: common.remarks            | Replace: 'Remarks' with {{ t('common.remarks', 'Remarks') }}
+
+FILE: resources/views/members/members_edit.blade.php
+--------------------------------------------------------------------------------
+  Line  444 | Key: common.yes                | Replace: 'Yes' with {{ t('common.yes', 'Yes') }}
+  Line  445 | Key: common.no                 | Replace: 'No' with {{ t('common.no', 'No') }}
+  Line   71 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   96 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+  Line  969 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+  Line  986 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/members/members_list_all.blade.php
+--------------------------------------------------------------------------------
+  Line   37 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   90 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line   63 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   56 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   57 | Key: common.photo              | Replace: 'Photo' with {{ t('common.photo', 'Photo') }}
+  Line   46 | Key: report.export_pdf         | Replace: 'Export to PDF' with {{ t('report.export_pdf', 'Export to PDF') }}
+  Line   48 | Key: report.print_table        | Replace: 'Print Table' with {{ t('report.print_table', 'Print Table') }}
+
+FILE: resources/views/members/members_list_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   35 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   31 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+
+FILE: resources/views/members/members_paymentplan_report.blade.php
+--------------------------------------------------------------------------------
+  Line  106 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line  166 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line  167 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line  165 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/members/members_paymentplan_report_pdf.blade.php
+--------------------------------------------------------------------------------
+  Line   33 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+  Line   34 | Key: common.amount             | Replace: 'Amount' with {{ t('common.amount', 'Amount') }}
+  Line   32 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/nursing/nursing_adldata.blade.php
+--------------------------------------------------------------------------------
+  Line  355 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  356 | Key: common.cancel             | Replace: 'Cancel' with {{ t('common.cancel', 'Cancel') }}
+  Line  299 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/nursing/nursing_allmembers.blade.php
+--------------------------------------------------------------------------------
+  Line   74 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   68 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+
+FILE: resources/views/nursing/nursing_bpdata.blade.php
+--------------------------------------------------------------------------------
+  Line  405 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+  Line  406 | Key: common.cancel             | Replace: 'Cancel' with {{ t('common.cancel', 'Cancel') }}
+  Line  300 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/nursing/nursing_print_adldata.blade.php
+--------------------------------------------------------------------------------
+  Line   37 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/nursing/nursing_print_bpdata.blade.php
+--------------------------------------------------------------------------------
+  Line   37 | Key: common.date               | Replace: 'Date' with {{ t('common.date', 'Date') }}
+
+FILE: resources/views/profile/users_add.blade.php
+--------------------------------------------------------------------------------
+  Line  122 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line  123 | Key: common.inactive           | Replace: 'Inactive' with {{ t('common.inactive', 'Inactive') }}
+  Line  119 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/profile/users_all.blade.php
+--------------------------------------------------------------------------------
+  Line   42 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   33 | Key: common.id                 | Replace: 'ID' with {{ t('common.id', 'ID') }}
+  Line   34 | Key: common.photo              | Replace: 'Photo' with {{ t('common.photo', 'Photo') }}
+
+FILE: resources/views/profile/users_edit.blade.php
+--------------------------------------------------------------------------------
+  Line  123 | Key: common.active             | Replace: 'Active' with {{ t('common.active', 'Active') }}
+  Line  124 | Key: common.inactive           | Replace: 'Inactive' with {{ t('common.inactive', 'Inactive') }}
+  Line  121 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+
+FILE: resources/views/settings/upload_employees_image.blade.php
+--------------------------------------------------------------------------------
+  Line   47 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+
+FILE: resources/views/settings/upload_members_image.blade.php
+--------------------------------------------------------------------------------
+  Line   48 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+
+FILE: resources/views/settings/upload_users_image.blade.php
+--------------------------------------------------------------------------------
+  Line   46 | Key: common.save               | Replace: 'Save' with {{ t('common.save', 'Save') }}
+
+FILE: resources/views/vehicles/form.blade.php
+--------------------------------------------------------------------------------
+  Line   78 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   96 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+FILE: resources/views/vehicles/index.blade.php
+--------------------------------------------------------------------------------
+  Line   56 | Key: common.status             | Replace: 'Status' with {{ t('common.status', 'Status') }}
+  Line   57 | Key: common.action             | Replace: 'Action' with {{ t('common.action', 'Action') }}
+  Line   50 | Key: common.description        | Replace: 'Description' with {{ t('common.description', 'Description') }}
+
+================================================================================
+SUMMARY
+================================================================================
+Total files: 81
+Total changes needed: 261
+
+Translation Keys Reference:
+----------------------------
+  common.save => 'Save'
+  common.cancel => 'Cancel'
+  common.edit => 'Edit'
+  common.delete => 'Delete'
+  common.add => 'Add'
+  common.search => 'Search'
+  common.reset => 'Reset'
+  common.update => 'Update'
+  common.close => 'Close'
+  common.export => 'Export'
+  common.print => 'Print'
+  common.view => 'View'
+  common.submit => 'Submit'
+  common.confirm => 'Confirm'
+  common.yes => 'Yes'
+  common.no => 'No'
+  common.active => 'Active'
+  common.inactive => 'Inactive'
+  common.status => 'Status'
+  common.action => 'Action'
+  common.id => 'ID'
+  common.photo => 'Photo'
+  common.description => 'Description'
+  common.reference => 'Reference'
+  common.amount => 'Amount'
+  common.date => 'Date'
+  common.remarks => 'Remarks'
+  report.export_pdf => 'Export to PDF'
+  report.export_excel => 'Export to Excel'
+  report.print_table => 'Print Table'

@@ -1,0 +1,233 @@
+@php
+    use Carbon\Carbon;
+
+    $companyName = $company['comp_name'] ?? $company['company_name'] ?? config('company.comp_name') ?? '';
+    $companyAddress = $company['address'] ?? $company['comp_address'] ?? config('company.address') ?? '';
+    $companyPhone = $company['phone'] ?? $company['comp_phone'] ?? config('company.phone') ?? '';
+    $companyFax = $company['fax'] ?? $company['comp_fax'] ?? config('company.fax') ?? '';
+
+    $statusLabel = $status === 'H'
+        ? 'Hold'
+        : ($status === 'D' ? 'Discharged' : 'Hold / Discharged');
+
+    $totalRecords = isset($records) ? $records->count() : 0;
+    $uniqueMembers = isset($records) ? $records->pluck('ParticipantId')->unique()->count() : 0;
+
+    function memberStatusLabelVitalsPdf($value) {
+        return $value === 'H' ? 'Hold' : ($value === 'D' ? 'Discharged' : $value);
+
+    }
+
+    function vitalsCheckMarkPdf($value) {
+        return strtoupper(trim((string)$value)) === 'Y' ? '✓' : '';
+    }
+@endphp
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vitals History PDF</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 8.5px;
+            color: #222;
+        }
+
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+
+        .company-name {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .company-info {
+            font-size: 9px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .report-title {
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 6px;
+            margin-bottom: 4px;
+        }
+
+        .report-subtitle {
+            text-align: center;
+            font-size: 9px;
+            margin-bottom: 6px;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+
+        .summary-table td {
+            border: 1px solid #999;
+            padding: 4px;
+            font-size: 9px;
+        }
+
+        .summary-label {
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .report-table th {
+            border: 1px solid #777;
+            padding: 4px 3px;
+            background-color: #e9ecef;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .report-table td {
+            border: 1px solid #999;
+            padding: 3px;
+            vertical-align: top;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .footer-note {
+            margin-top: 8px;
+            font-size: 8px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<table class="header-table">
+    <tr>
+        <td>
+            <div class="company-name">{{ $companyName }}</div>
+
+            @if(!empty($companyAddress))
+                <div class="company-info">{{ $companyAddress }}</div>
+            @endif
+
+            @if(!empty($companyPhone) || !empty($companyFax))
+                <div class="company-info">
+                    @if(!empty($companyPhone))
+                        Phone: {{ $companyPhone }}
+                    @endif
+
+                    @if(!empty($companyFax))
+                        &nbsp;&nbsp; Fax: {{ $companyFax }}
+                    @endif
+                </div>
+            @endif
+        </td>
+    </tr>
+</table>
+
+<div class="report-title">Vitals History Report</div>
+
+<div class="report-subtitle">
+    Date Range:
+    <strong>{{ $displayStartDate }}</strong>
+    to
+    <strong>{{ $displayEndDate }}</strong>
+</div>
+
+<table class="summary-table">
+    <tr>
+        <td class="summary-label">Member Status</td>
+        <td>{{ $statusLabel }}</td>
+
+        <td class="summary-label">Vitals Records</td>
+        <td>{{ $totalRecords }}</td>
+
+        <td class="summary-label">Members Found</td>
+        <td>{{ $uniqueMembers }}</td>
+    </tr>
+</table>
+
+<table class="report-table">
+    <thead>
+        <tr>
+            <th rowspan="2" style="width: 6%;">ID</th>
+            <th rowspan="2" style="width: 11%;">Last Name</th>
+            <th rowspan="2" style="width: 11%;">First Name</th>
+            <th rowspan="2" style="width: 8%;">Status</th>
+            <th rowspan="2" style="width: 8%;">Day/Date</th>
+
+            <th colspan="2" style="width: 12%;">Blood Pressure</th>
+            <th rowspan="2" style="width: 6%;">Sugar</th>
+            <th rowspan="2" style="width: 6%;">Pulse</th>
+            <th rowspan="2" style="width: 6%;">Weight</th>
+            <th rowspan="2" style="width: 6%;">Temp (°F)</th>
+
+            <th rowspan="2" style="width: 6%;">Dressing</th>
+            <th rowspan="2" style="width: 6%;">Toilet</th>
+            <th rowspan="2" style="width: 6%;">Transfer</th>
+            <th rowspan="2" style="width: 7%;">Ambulation</th>
+            <th rowspan="2" style="width: 6%;">Eating</th>
+        </tr>
+        <tr>
+            <th style="width: 6%;">Max/SYS</th>
+            <th style="width: 6%;">Min/DIA</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @forelse($records ?? [] as $row)
+            <tr>
+                <td>{{ $row->ParticipantId }}</td>
+                <td>{{ $row->LastName ?? '' }}</td>
+                <td>{{ $row->FirstName ?? '' }}</td>
+                <td>{{ memberStatusLabelVitalsPdf($row->member_status ?? '') }}</td>
+                <td data-order="{{ !empty($row->CalenderDate) ? Carbon::parse($row->CalenderDate)->format('Y-m-d') : '' }}">
+                    {{ !empty($row->CalenderDate)
+                        ? Carbon::parse($row->CalenderDate)->format('D, m/d/Y')
+                        : '' }}
+                </td>
+                <td class="text-center">{{ $row->LowBP ?? '' }}</td>
+                <td class="text-center">{{ $row->HighBP ?? '' }}</td>
+                <td class="text-center">{{ $row->Sugar ?? '' }}</td>
+                <td class="text-center">{{ $row->Pulse ?? '' }}</td>
+                <td class="text-center">{{ $row->Weight ?? '' }}</td>
+                <td class="text-center">{{ $row->Temperature ?? '' }}</td>
+
+                <td class="text-center checkmark">{{ vitalsCheckMarkPdf($row->BathingYN ?? '') }}</td>
+                <td class="text-center checkmark">{{ vitalsCheckMarkPdf($row->ToiletYN ?? '') }}</td>
+                <td class="text-center checkmark">{{ vitalsCheckMarkPdf($row->TransferYN ?? '') }}</td>
+                <td class="text-center checkmark">{{ vitalsCheckMarkPdf($row->LocomotionYN ?? '') }}</td>
+                <td class="text-center checkmark">{{ vitalsCheckMarkPdf($row->EatingYN ?? '') }}</td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="16" class="text-center">
+                    No vitals records found for selected criteria.
+                </td>
+            </tr>
+        @endforelse
+    </tbody>
+</table>
+<div class="footer-note">
+    Printed on {{ now()->format('m/d/Y h:i A') }}
+</div>
+
+</body>
+</html>

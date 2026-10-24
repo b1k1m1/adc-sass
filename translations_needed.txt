@@ -1,0 +1,311 @@
+================================================================================
+STRINGS REQUIRING TRANSLATION TABLE ENTRIES
+================================================================================
+
+These strings are used in the application but NOT yet in the translation table.
+The table has unique constraint on (locale, key), so entries for 'es' and 'ko' 
+locales need to be added for each key.
+
+================================================================================
+COMMON UI ELEMENTS (Buttons, Links, Actions)
+================================================================================
+Key Pattern: common.*
+
+common.save         | English: Save
+common.cancel       | English: Cancel
+common.edit         | English: Edit
+common.delete       | English: Delete
+common.add          | English: Add
+common.search       | English: Search
+common.reset        | English: Reset
+common.update       | English: Update
+common.close        | English: Close
+common.export       | English: Export
+common.print        | English: Print
+common.view         | English: View
+common.submit       | English: Submit
+common.confirm      | English: Confirm
+common.yes          | English: Yes
+common.no           | English: No
+common.loading      | English: Loading...
+common.no_data      | English: No data found
+common.success      | English: Success
+common.error        | English: Error
+common.warning      | English: Warning
+common.active       | English: Active
+common.inactive     | English: Inactive
+common.status       | English: Status
+common.action       | English: Action
+common.sr_no        | English: Sr#
+common.id           | English: ID
+common.photo        | English: Photo
+common.description  | English: Description
+common.reference    | English: Reference
+common.amount       | English: Amount
+common.date         | English: Date
+common.remarks      | English: Remarks
+
+================================================================================
+MEMBERS MODULE LABELS
+================================================================================
+Key Pattern: members.*
+
+members.last_name       | English: Last name
+members.first_name      | English: First name
+members.middle_initial  | English: Mi
+members.sex             | English: Sex
+members.male            | English: Male
+members.female          | English: Female
+members.marital_status  | English: Marital Status
+members.married         | English: Married
+members.single          | English: Single
+members.widow           | English: Widow
+members.divorcee        | English: Divorcee
+members.address1        | English: Address1
+members.address2        | English: Address2
+members.city            | English: City
+members.state           | English: State
+members.zip_code        | English: Zip Code
+members.county          | English: County
+members.home_phone      | English: Home Phone
+members.cell_phone      | English: Cell Phone
+members.contact_1       | English: Contact # 1
+members.contact_2       | English: Contact # 2
+members.contact_relation| English: Contact Relation
+members.living_with     | English: Living with
+members.emergency_addr  | English: Emergency Address
+members.emergency_city  | English: Emergency City
+members.emergency_state | English: Emergency State
+members.emergency_zip   | English: Emergency Zip
+members.birth_date      | English: Birth Date
+members.place_of_birth  | English: Place of Birth
+members.country_birth   | English: Country of Birth
+members.us_citizen      | English: US Citizen
+members.religion        | English: Religion
+members.language        | English: Language Spoken
+members.comments        | English: Comments
+members.insulin_med     | English: Insulin/Medication
+members.yes             | English: Yes
+members.no              | English: No
+members.driver          | English: Driver
+members.route           | English: Route
+members.days_allowed    | English: # Days Allowed
+members.admitted_from   | English: Admitted from
+members.referred_by     | English: Referred By
+members.discharge_date  | English: Discharged Date
+members.discharged_to   | English: Discharged To
+members.admission_date  | English: Admission Date
+members.shift           | English: Shift
+members.morning         | English: Morning
+members.afternoon       | English: Afternoon
+members.sun             | English: Sun
+members.mon             | English: Mon
+members.tue             | English: Tue
+members.wed             | English: Wed
+members.thu             | English: Thu
+members.fri             | English: Fri
+members.sat             | English: Sat
+members.medicaid        | English: Medicaid #
+members.ss              | English: SS #
+members.old_medicare    | English: Old Medicare #
+members.new_medicare    | English: New Medicare #
+members.hospital_part_a | English: Hospital Part A
+members.medical_part_b  | English: Medical Part B
+members.supp_insurance  | English: Supplementary Insurance
+members.admitting_diag  | English: Admitting Diagnosis
+members.primary_diag    | English: Primary Diagnosis (ICD-10)
+members.secondary_diag  | English: Secondary Diagnosis (ICD-10)
+members.other_diag      | English: Other Diagnosis
+members.allergies       | English: Allergies
+members.blood_pressure  | English: Blood Pressure
+members.blood_sugar     | English: Blood Sugar
+members.weight          | English: Weight
+members.monitoring      | English: Monitoring & Parameters
+members.reason_discharge| English: Reason for Discharge
+members.status_active   | English: Active
+members.status_discharge| English: Discharge
+members.status_guest    | English: Guest
+members.status_hold     | English: Hold
+
+================================================================================
+ATTENDANCE MODULE LABELS
+================================================================================
+Key Pattern: attendance.*
+
+attendance.daily         | English: Daily Attendance
+attendance.weekly        | English: Weekly Attendance
+attendance.weekly_report | English: Weekly Attendance Report
+attendance.checkmark     | English: Checkmark
+attendance.monthly       | English: Monthly Attendance Report
+attendance.billing       | English: Weekly Attendance Billing Report
+attendance.report       | English: Attendance Report
+attendance.run           | English: Run
+attendance.show          | English: Show
+
+================================================================================
+NURSING MODULE LABELS
+================================================================================
+Key Pattern: nursing.*
+
+nursing.monthly_vitals   | English: Monthly Vitals & ADL
+nursing.medicine         | English: Member's Medicine
+nursing.icd10_code       | English: ICD 10 Code
+nursing.toilet           | English: Toilet
+nursing.transfer         | English: Transfer
+nursing.locomotion       | English: Locomotion
+nursing.eating           | English: Eating
+nursing.bp_data          | English: BP Data
+nursing.adl_data         | English: ADL Data
+
+================================================================================
+ACCOUNTS MODULE LABELS
+================================================================================
+Key Pattern: accounts.*
+
+accounts.bank            | English: Bank
+accounts.statement_period| English: Statement Period
+accounts.opening_balance | English: Opening Balance
+accounts.opening_date    | English: Opening Date
+accounts.ending_balance  | English: Ending Balance
+accounts.ending_date     | English: Ending Date
+accounts.load            | English: Load
+accounts.refresh         | English: Refresh
+accounts.date_from       | English: Date From
+accounts.date_to         | English: Date To
+accounts.balance_sheet   | English: Balance Sheet
+accounts.trial_balance   | English: Trial Balance
+accounts.profit_loss     | English: Profit & Loss
+accounts.general_ledger  | English: General Ledger
+accounts.bank_deposit    | English: Bank Deposit
+accounts.bank_payment   | English: Bank Payment
+accounts.journal_entry   | English: Journal Entry
+accounts.voucher         | English: Voucher #
+accounts.transaction_date| English: Transaction Date
+accounts.posted          | English: Posted
+accounts.account_type    | English: Account Type
+accounts.vendor          | English: Vendor
+accounts.expense         | English: Expense
+accounts.customer        | English: Customer
+accounts.income          | English: Income
+accounts.received_from   | English: Received From
+accounts.check_no        | English: Check #
+accounts.check_date      | English: Check Date
+accounts.add_row         | English: + (Add Row)
+accounts.remove_row      | English: - (Remove Row)
+accounts.save_journal    | English: Save Journal Entry
+
+================================================================================
+DRIVERS MODULE LABELS
+================================================================================
+Key Pattern: drivers.*
+
+drivers.vehicle_master   | English: Vehicle Master
+drivers.drivers_log      | English: Drivers Log
+drivers.service_date     | English: Service Date
+drivers.generate_report  | English: Generate Report
+
+================================================================================
+ADMIN/PERMISSION MODULE LABELS
+================================================================================
+Key Pattern: admin.*
+
+admin.all_permissions    | English: All Permission
+admin.add_permission     | English: Add Permission
+admin.permission_name    | English: Permission Name
+admin.permission_group   | English: Permission Group
+admin.guard_name        | English: Guard name
+admin.role_name         | English: Role Name
+admin.add_role_info     | English: Add Role Information
+admin.save_info         | English: Save Information
+admin.add_role_perm     | English: Add Roles Permission
+admin.all_roles_perm    | English: All Roles Permission
+admin.assign_perms      | English: Assign Permissions to Role
+
+================================================================================
+AUTHENTICATION LABELS
+================================================================================
+Key Pattern: auth.*
+
+auth.email               | English: Email
+auth.password            | English: Password
+auth.confirm_password    | English: Confirm Password
+auth.remember_me        | English: Remember me
+auth.forgot_password     | English: Forgot your password?
+auth.login              | English: Log In
+auth.logout             | English: Log Out
+auth.register           | English: Register
+auth.already_registered | English: Already registered?
+auth.reset_password     | English: Reset Password
+auth.email_reset_link   | English: Email Password Reset Link
+auth.confirm            | English: Confirm
+auth.verify_email       | English: Verify Email
+auth.thanks_signup      | English: Thanks for signing up!
+auth.resend_verification| English: Resend Verification Email
+auth.link_sent          | English: A new verification link has been sent...
+auth.profile            | English: Profile
+auth.profile_info       | English: Profile Information
+auth.update_password    | English: Update Password
+auth.delete_account     | English: Delete Account
+auth.saved              | English: Saved
+
+================================================================================
+HEADER/NAVIGATION LABELS
+================================================================================
+Key Pattern: header.*
+
+header.home              | English: Home
+header.search            | English: Search...
+header.profile          | English: Profile
+header.english          | English: English
+header.korean           | English: Korean
+header.spanish          | English: Spanish
+
+================================================================================
+REPORT/EXPORT LABELS
+================================================================================
+Key Pattern: report.*
+
+report.export_pdf        | English: Export to PDF
+report.export_excel      | English: Export to Excel
+report.print_table       | English: Print Table
+
+================================================================================
+TABS
+================================================================================
+Key Pattern: common.tabs.*
+
+common.tabs.members      | English: Members
+common.tabs.staff        | English: Staff
+common.tabs.accounts     | English: Accounts
+common.tabs.drivers      | English: Drivers
+common.tabs.doctors      | English: Doctors
+common.tabs.nursing      | English: Nursing
+common.tabs.attendance   | English: Attendance
+common.tabs.activity     | English: Activity
+common.tabs.social       | English: Social Service
+common.tabs.nutrition    | English: Nutrition
+common.tabs.claims       | English: Claims
+common.tabs.roles        | English: Roles
+
+================================================================================
+MENU ITEMS (Additional)
+================================================================================
+Key Pattern: menu.*
+
+menu.vehicle            | English: Vehicle Master
+
+================================================================================
+SUMMARY
+================================================================================
+Total unique keys requiring translation entries: 150+
+
+Each key needs TWO entries in the translations table:
+  1. locale = 'es' with Spanish translation
+  2. locale = 'ko' with Korean translation
+
+Current entries in table: 38 (19 Spanish + 19 Korean)
+Keys already covered: common.back, common.tabs.data_entry, common.tabs.reports,
+  common.tabs.settings, menu.accounts, menu.activity, menu.administrator,
+  menu.attendance, menu.claims, menu.doctors, menu.drivers, menu.members,
+  menu.nursing, menu.nutrition, menu.roles, menu.shift, menu.social,
+  menu.staff, menu.sysadmin
