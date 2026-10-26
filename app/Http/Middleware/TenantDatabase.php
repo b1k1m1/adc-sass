@@ -4,77 +4,24 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth;
 
 class TenantDatabase
 {
     public function handle(Request $request, Closure $next): Response
     {
+        /*
+        |--------------------------------------------------------------------------
+        | Single-tenant fallback mode
+        |--------------------------------------------------------------------------
+        */
 
         if (!config('adc.multi_tenant_enabled')) {
 
-            /*
-        |--------------------------------------------------------------------------
-        | Default database
-        |--------------------------------------------------------------------------
-        */
-
             $defaultDatabase = config('adc.default_database');
-
-
-            /*
-        |--------------------------------------------------------------------------
-        | Get default organization information
-        |--------------------------------------------------------------------------
-        */
-
-            $defaultOrganization = DB::connection('master')
-                ->table('organizations')
-                ->where('database_name', $defaultDatabase)
-                ->where('status', 1)
-                ->first();
-
-
-            /*
-        |--------------------------------------------------------------------------
-        | Remove tenant selection
-        |--------------------------------------------------------------------------
-        */
-
-            session()->forget([
-                'organization_id',
-                'organization_name',
-                'tenant_database',
-                'media_folder',
-                'has_shift',
-            ]);
-
-
-            /*
-        |--------------------------------------------------------------------------
-        | Restore default organization information
-        |--------------------------------------------------------------------------
-        */
-
-            if ($defaultOrganization) {
-
-                session([
-                    'organization_name' => $defaultOrganization->organization_name,
-                    'media_folder'      => $defaultOrganization->media_folder,
-                    'has_shift'         => $defaultOrganization->has_shift,
-                ]);
-            }
-
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Force default database
-            |--------------------------------------------------------------------------
-            */
 
             config([
                 'database.connections.mysql.database' => $defaultDatabase,
@@ -83,22 +30,18 @@ class TenantDatabase
             DB::purge('mysql');
             DB::reconnect('mysql');
 
-            /*
-            |--------------------------------------------------------------------------
-            | Clear cached authenticated user
-            |--------------------------------------------------------------------------
-            */
-
-            //Auth::guard('web')->forgetUser();
-
-
-
             return $next($request);
         }
+
         /*
-         * Do not switch tenant database during authentication routes.
-         * Login must complete first.
-         */
+        |--------------------------------------------------------------------------
+        | Public / authentication routes
+        |--------------------------------------------------------------------------
+        |
+        | Login must be allowed before a tenant has been selected.
+        |
+        */
+
         if (
             $request->is('login') ||
             $request->is('logout') ||
@@ -110,35 +53,139 @@ class TenantDatabase
             return $next($request);
         }
 
-        if (session()->has('organization_id')) {
+        /*
+        |--------------------------------------------------------------------------
+        | No authenticated user
+        |--------------------------------------------------------------------------
+        */
 
-            $organization = DB::connection('master')
-                ->table('organizations')
-                ->where('id', session('organization_id'))
-                ->where('status', 1)
-                ->first();
+        if (!Auth::guard('web')->check()) {
+            return $next($request);
+        }
 
-            if (!$organization || empty($organization->database_name)) {
-                abort(403, 'Invalid organization selected');
-            }
+        /*
+        |--------------------------------------------------------------------------
+        | Get authenticated central SaaS user
+        |--------------------------------------------------------------------------
+        */
 
-            session([
-                'organization_name' => $organization->organization_name,
-                'tenant_database'   => $organization->database_name,
-                'media_folder'      => $organization->media_folder,
-                'has_shift'         => $organization->has_shift,
-            ]);
+        $user = Auth::guard('web')->user();
 
-            config([
-                'database.connections.mysql.database' => $organization->database_name,
-            ]);
+        if (!$user || empty($user->organization_id)) {
 
-            DB::purge('mysql');
-            DB::reconnect('mysql');
+            Auth::guard('web')->logout();
 
-            if (!Schema::connection('mysql')->hasTable('members')) {
-                abort(403, 'Invalid tenant database');
-            }
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            abort(403, 'No organization is assigned to this user.');
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Organization must come from authenticated user
+        |--------------------------------------------------------------------------
+        |
+        | Do NOT trust organization_id stored in session as the authority.
+        |
+        */
+
+        $organization = DB::connection('master')
+            ->table('organizations')
+            ->where('id', $user->organization_id)
+            ->where('status', 1)
+            ->where('is_ready', 1)
+            ->first();
+
+        if (!$organization || empty($organization->database_name)) {
+
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            abort(403, 'Your organization is unavailable.');
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Protect against session manipulation
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            session()->has('organization_id') &&
+            (int) session('organization_id') !== (int) $user->organization_id
+        ) {
+
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            abort(403, 'Organization session mismatch.');
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Store trusted organization information
+        |--------------------------------------------------------------------------
+        */
+
+        session([
+            'organization_id'   => $organization->id,
+            'organization_name' => $organization->organization_name,
+            'tenant_database'   => $organization->database_name,
+            'media_folder'      => $organization->media_folder,
+            'has_shift'         => $organization->has_shift,
+        ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Switch tenant database
+        |--------------------------------------------------------------------------
+        */
+
+        config([
+            'database.connections.mysql.database'
+            => $organization->database_name,
+        ]);
+
+        DB::purge('mysql');
+        DB::reconnect('mysql');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Verify physical database connection
+        |--------------------------------------------------------------------------
+        */
+
+        $currentDatabase = DB::connection('mysql')->getDatabaseName();
+
+        if ($currentDatabase !== $organization->database_name) {
+
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            abort(403, 'Tenant database connection mismatch.');
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Verify tenant database structure
+        |--------------------------------------------------------------------------
+        */
+
+        if (!Schema::connection('mysql')->hasTable('members')) {
+
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            abort(403, 'Invalid tenant database.');
         }
 
         return $next($request);

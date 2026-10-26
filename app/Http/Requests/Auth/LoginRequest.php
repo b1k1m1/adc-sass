@@ -46,10 +46,9 @@ class LoginRequest extends FormRequest
         $user = TenantUser::query()
             ->where('status', 'Active')
             ->where(function ($query) use ($login) {
-                $query->where('email', $login)
-                    ->orWhere('name', $login)
-                    ->orWhere('username', $login)
-                    ->orWhere('phone', $login);
+                $query->where('email', $login)                    
+                       ->orWhere('username', $login)
+                       ->orWhere('phone', $login);
             })
             ->first();
 

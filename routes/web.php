@@ -45,9 +45,9 @@ use App\Http\Controllers\X12SettingsController;
 use App\Http\Controllers\ClaimsReportsController;
 use App\Http\Controllers\EraReportsController;
 use App\Http\Controllers\SpecialReportController;
-
-
-
+use App\Http\Controllers\SaasOrganizationController;
+use App\Http\Controllers\SaasUserController;
+use App\Http\Controllers\OrganizationUserController;
 
 Route::redirect('/', 'login');
 
@@ -673,7 +673,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/claims/resubmit-batches/{batchId}', 'resubmitBatchShow')->name('claims.resubmit.batches.show');
         Route::post('/claims/resubmit-batches/{batchId}/selected', 'resubmitBatchSelected')->name('claims.resubmit.batches.selected');
         Route::post('/claims/resubmit-batches/{batchId}/all', 'resubmitBatchAll')->name('claims.resubmit.batches.all');
-        Route::get('/claims/resubmission-ready','resubmissionReady')->name('claims.resubmission.ready');
+        Route::get('/claims/resubmission-ready', 'resubmissionReady')->name('claims.resubmission.ready');
         Route::post('/claims/resubmission-generate', 'generateResubmission837P')->name('claims.resubmission.generate');
         Route::get('/claims/resubmission-history', 'resubmissionHistory')->name('claims.resubmission.history');
 
@@ -736,7 +736,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/claims/member-statement/view', 'memberStatementView')->name('claims.member.statement.view');
         Route::get('/claims/member-statement/pdf', 'memberStatementPdf')->name('claims.member.statement.pdf');
         Route::get('/claims/member-statement/excel', 'memberStatementExcel')->name('claims.member.statement.excel');
-
     });
 
     // ERA related stuff
@@ -744,7 +743,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['auth', 'perm:claims.menu'])->controller(EraController::class)->group(function () {
         Route::get('/era/upload', 'showUploadForm')->name('era.upload.form');
         Route::post('/era/upload', 'processUpload')->name('era.upload.process');
-        Route::get('/era', 'index')->name('era.index');         // upload + grid
+        Route::get('/era', 'index')->name('era.index');       
+        
+        // upload + grid
         Route::post('/upload', 'processUploadNew')->name('era.upload');
         Route::get('/{id}/pdf', 'downloadPdf')->name('era.pdf');
         Route::get('/{id}/csv', 'downloadCsv')->name('era.csv');
@@ -783,8 +784,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/era/denial-exceptions/{eraClaimId}/history', 'denialExceptionHistory')->name('era.denial.exceptions.history');
         Route::get('/era/denial-exceptions-view', 'denialExceptionsView')->name('era.denial.exceptions.view');
         Route::get('/era/denial-resolution', 'denialResolution')->name('era.denial.resolution');
-        Route::post('/era/denial-resolution/resolve','resolveDeniedClaims')->name('era.denial.resolve');
-
+        Route::post('/era/denial-resolution/resolve', 'resolveDeniedClaims')->name('era.denial.resolve');
     });
 
     // Claims Rejections
@@ -948,7 +948,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/reports/submitted-claims', 'index')->name('reports.submitted.claims.index');
         Route::get('/reports/submitted-claims/{batchId}', 'show')->name('reports.submitted.claims.show');
         Route::get('/reports/submitted-claims/{batchId}/pdf', 'pdf')->name('reports.submitted.claims.pdf');
-
     });
 
     // Claims and ERA for report purpose only.
@@ -957,7 +956,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/reports/processed-era', 'index')->name('reports.processed.era.index');
         Route::get('/reports/processed-era/{eraId}', 'show')->name('reports.processed.era.show');
         Route::get('/reports/processed-era/{eraId}/pdf', 'pdf')->name('reports.processed.era.pdf');
-
     });
 
     //Special Reports
@@ -966,15 +964,60 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/specialreports/dashboard', 'SpecialReportDashboard')->name('specialreports.dashboard');
         Route::get('/specialreports/pending-rebill', 'pendingRebillReport')->name('specialreports.pending.rebill');
         Route::get('/specialreports/pending-rebill/pdf', 'pendingRebillReportPdf')->name('specialreports.pending.rebill.pdf');
-
     });
 
     Route::middleware(['auth', 'perm:specialreport.menu'])->controller(ERAController::class)->group(function () {
 
         Route::get('/era/denial-exceptions-view', 'denialExceptionsView')->name('era.denial.exceptions.view');
         Route::get('/era/denied-claims-report', 'deniedClaimsReport')->name('era.denied.claims.report');
-        
+    });
 
+    Route::middleware(['auth', 'platform.admin',])->prefix('saas-admin')->name('saas.')->group(function () {
+        /*
+    |--------------------------------------------------------------------------
+    | SaaS Dashboard
+    |--------------------------------------------------------------------------
+    */
+        Route::get('/dashboard', function () {
+            return view('saas.dashboard');
+        })->name('dashboard');
+        /*
+    |--------------------------------------------------------------------------
+    | Organizations
+    |--------------------------------------------------------------------------
+    */
+        Route::get('/organizations', [SaasOrganizationController::class, 'index'])->name('organizations.index');
+        Route::get('/organizations/create', [SaasOrganizationController::class, 'create'])->name('organizations.create');
+        Route::post('/organizations', [SaasOrganizationController::class, 'store'])->name('organizations.store');
+        Route::get('/organizations/{id}/provision', [SaasOrganizationController::class, 'provisionConfirm'])->name('organizations.provision.confirm');
+        Route::post('/organizations/{id}/provision', [SaasOrganizationController::class, 'provision'])->name('organizations.provision');
+        Route::get('/organizations/{id}/edit', [SaasOrganizationController::class, 'edit'])->name('organizations.edit');
+        Route::put('/organizations/{id}', [SaasOrganizationController::class, 'update'])->name('organizations.update');
+        Route::get('/organizations/{id}', [SaasOrganizationController::class, 'show'])->name('organizations.show');
+
+    /*
+    |--------------------------------------------------------------------------
+    | SaaS Users
+    |--------------------------------------------------------------------------
+    */
+        Route::get('/users', [SaasUserController::class, 'index'])->name('users.index');
+        Route::get('/users/create', [SaasUserController::class, 'create'])->name('users.create');
+        Route::post('/users', [SaasUserController::class, 'store'])->name('users.store');
+        Route::get('/users/{id}/edit', [SaasUserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{id}', [SaasUserController::class, 'update'])->name('users.update');
+       
+    });
+
+    Route::middleware(['auth'])->prefix('organization-users')->name('organization.users.')->group(function () {
+
+        Route::get('/', [OrganizationUserController::class, 'index'])->name('index');
+        Route::get('/create', [OrganizationUserController::class, 'create'])->name('create');
+        Route::post('/', [OrganizationUserController::class, 'store'])->name('store');    
+        Route::get('/{id}/edit', [OrganizationUserController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [OrganizationUserController::class, 'update'])->name('update');
+        Route::get('/{id}/password', [OrganizationUserController::class, 'passwordEdit'])->name('password.edit');
+        Route::put('/{id}/password', [OrganizationUserController::class, 'passwordUpdate'])->name('password.update');
+    
     });
 
     /*
@@ -1017,5 +1060,4 @@ Route::middleware(['auth'])->group(function () {
 
         return 'Response: ' . $resp->getStatusCode() . ' ' . $resp->getBody();
     });
-
 });

@@ -25,6 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'perm'   => \App\Http\Middleware\CheckMenuPermission::class,
             'tenant' => \App\Http\Middleware\TenantDatabase::class,
+            'platform.admin' => \App\Http\Middleware\PlatformAdmin::class,
         ]);
 
         $middleware->prependToPriorityList(

@@ -896,7 +896,53 @@
                     </li>
                 @endif
 
+                {{-- =====================================================
+                    SAAS PLATFORM ADMINISTRATION
+                    ===================================================== --}}
 
+                @if ($user && (int) $user->is_platform_admin === 1)
+                    <li class="sidebar-admin-divider"></li>
+
+                    <li class="menu-title">
+                        SaaS Administration
+                    </li>
+
+
+                    {{-- Organizations --}}
+                    <li class="{{ request()->routeIs('saas.organizations.*') ? 'mm-active' : '' }}">
+
+                        <a href="{{ route('saas.organizations.index') }}"
+                            class="{{ request()->routeIs('saas.organizations.*') ? 'active' : '' }}"
+                            data-tooltip="Organizations">
+
+                            <i data-feather="grid"></i>
+
+                            <span>
+                                Organizations
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    {{-- SaaS Users --}}
+                    <li class="{{ request()->routeIs('saas.users.*') ? 'mm-active' : '' }}">
+
+                        <a href="{{ route('saas.users.index') }}"
+                            class="{{ request()->routeIs('saas.users.*') ? 'active' : '' }}"
+                            data-tooltip="SaaS Users">
+
+                            <i data-feather="user-check"></i>
+
+                            <span>
+                                SaaS Users
+                            </span>
+
+                        </a>
+
+                    </li>
+                @endif
 
                 {{-- =====================================================
                      ADMINISTRATION
@@ -930,6 +976,23 @@
                     </li>
                 @endif
 
+                @if ($user && $user->hasAnyRole(['superadmin', 'admin', 'genadmin']))
+                    <li class="{{ request()->routeIs('organization.users.*') ? 'mm-active' : '' }}">
+
+                        <a href="{{ route('organization.users.index') }}"
+                            class="{{ request()->routeIs('organization.users.*') ? 'active' : '' }}"
+                            data-tooltip="Organization Users">
+
+                            <i data-feather="users"></i>
+
+                            <span>
+                                Organization Users
+                            </span>
+
+                        </a>
+
+                    </li>
+                @endif
 
                 {{-- Administrator --}}
                 @if ($canMenu('administrator.menu'))
